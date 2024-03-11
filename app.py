@@ -31,7 +31,9 @@ def summarize():
         
         return jsonify(response)
     except Exception as e:
-        return jsonify({'error': str(e)})
+        return jsonify({'error': str(e),
+        'error': str(e),
+        'error': str(e)})
 
 @app.route('/download_extension')
 def download_extension():
@@ -43,12 +45,12 @@ def download_extension():
 def get_summary():
     try:
         data = request.json
-        # video_id = data['video_id']  # Get video_id from JSON data
-        # raw_transcript = get_transcript(video_id)
-        # transcript = preprocess_transcript(raw_transcript)
+        video_id = data['video_id']
+        raw_transcript = get_transcript(video_id)
+        transcript = preprocess_transcript(raw_transcript)
         raw_transcript = "hello"
         summary = "The Rocky Mountains, sprawling across the western part of the North American continental shelf, offer a haven for outdoor enthusiasts with activities like hiking, climbing, skiing, and camping. The range's geographical extent is debated, starting north of the Pecos River in New Mexico and extending to the Canadian Provinces of Alberta and British Columbia, with differing definitions between Canada and the US. Three main sections define the Rockies: the Canadian Rockies, Yellowstone National Park, and the elevated region spanning Colorado and Utah, renowned for its numerous peaks over 14,000 feet. Yellowstone, nestled in the heart of the Rockies, showcases its volcanic origin and abundant geothermal features. The Continental Divide of the Americas traverses the Rockies, splitting the continent into Atlantic and Pacific drainage basins, with exceptions like endorheic basins and unique geological features such as Isa Lake and North Two Ocean Creek."
-        return jsonify({'transcript': raw_transcript, 'summary': summary})
+        return jsonify({'transcript': transcript, 'summary': summary})
     except Exception as e:
         return jsonify({'error': str(e)})
 

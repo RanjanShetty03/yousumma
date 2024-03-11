@@ -1,0 +1,8 @@
+flask
+gunicorn
+cors
+flask_cors
+contractions
+inflect
+youtube_transcript_api
+googletrans

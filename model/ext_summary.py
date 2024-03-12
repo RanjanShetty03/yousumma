@@ -7,7 +7,6 @@ nltk.download('punkt', quiet=True)
 
 def generate_extractive_summary(text):
     def replace_dot(input_string):
-        # Replace . followed by anything other than whitespace with dot
         return re.sub(r'\.(?!\s|$|\n)', 'dot', input_string)
 
     stop_words = set(stopwords.words('english'))
@@ -35,7 +34,7 @@ def generate_extractive_summary(text):
         return result
 
     if '.' not in text:
-        text = add_period_after_n_words(text, 7)
+        text = add_period_after_n_words(text, 10)
 
     sentences = sent_tokenize(text)
     sentence_ranking = {}

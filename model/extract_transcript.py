@@ -4,6 +4,8 @@ from googletrans import Translator
 translator = Translator()
 
 def get_videoid(url):
+    if 'youtu.be' in url:
+        url = url.replace('youtu.be/', 'www.youtube.com/watch?v=')
     video_id = url.split("v=")[1][0:12]
     return video_id
 

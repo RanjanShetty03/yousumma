@@ -6,6 +6,12 @@ $(document).ready(function() {
         document.getElementById('spinner').style.display = 'block';
         
         var videoLink = $('#videoLink').val();
+
+        if (!isValidYouTubeLink(videoLink)) {
+            document.getElementById('spinner').style.display = 'none';
+            alert('Error: Invalid YouTube link. Please enter a valid YouTube video link.');
+            return;
+        }
         
         $.ajax({
             type: 'POST',
@@ -74,6 +80,11 @@ $(document).ready(function() {
     function onPlayerReady(event) {
         event.target.playVideo();
     }
+
+    function isValidYouTubeLink(link) {
+        return link.includes('youtu.be/') || link.includes('www.youtube.com/');
+    }
+
 });
 
 

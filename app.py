@@ -30,9 +30,9 @@ def summarize():
         }
         
         return jsonify(response)
-        
+
     except Exception as e:
-        return jsonify({'error': str(e)})
+        return jsonify({'transcript': "Error: Transcript not available for this video.", 'summary': "Error: Transcript not available for this video.", 'video_id': "No transcript available"})
 
 @app.route('/download_extension')
 def download_extension():
@@ -49,7 +49,7 @@ def get_summary():
         summary = generate_extractive_summary(transcript)
         return jsonify({'transcript': transcript, 'summary': summary})
     except Exception as e:
-        return jsonify({'error': str(e)})
+        return jsonify({'transcript': "Error: Transcript not available for this video.", 'summary': "Error: Transcript not available for this video."})
 
 
 if __name__ == '__main__':

@@ -6,3 +6,4 @@ contractions
 inflect
 youtube_transcript_api
 googletrans
+nltk

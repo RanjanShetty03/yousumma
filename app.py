@@ -3,6 +3,7 @@ from flask_cors import CORS
 from model.extract_transcript import get_transcript, get_videoid
 from model.preprocess import preprocess_transcript
 from model.ext_summary import generate_extractive_summary
+from model.pesgasus_summary import summarize_text
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
@@ -23,6 +24,9 @@ def summarize():
         video_id = get_videoid(video_link)
         transcript = get_transcript(video_id)
         summary = generate_extractive_summary(transcript)
+        abs_summary = summarize_text(summary)
+        if abs_summary is not None:
+            summary = abs_summary
         response = {
             'transcript': transcript,
             'summary': summary,
@@ -47,6 +51,9 @@ def get_summary():
         video_id = data['video_id']
         transcript = get_transcript(video_id)
         summary = generate_extractive_summary(transcript)
+        abs_summary = summarize_text(summary)
+        if abs_summary is not None:
+            summary = abs_summary
         return jsonify({'transcript': transcript, 'summary': summary})
     except Exception as e:
         return jsonify({'transcript': "Error: Transcript not available for this video.", 'summary': "Error: Transcript not available for this video."})

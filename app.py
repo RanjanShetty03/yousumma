@@ -21,7 +21,7 @@ def summarize():
         video_link = request.form.get('video_link')
         video_id = get_videoid(video_link)
         raw_transcript = get_transcript(video_id)
-        transcript = preprocess_transcript(raw_transcript)
+        transcript = raw_transcript
         summary = "This is dummy summaryThis is dummy summary This is dummy summaryThis is dummy summary This is dummy summaryThis is dummy summary This is dummy summaryThis is dummy summary This is dummy summaryThis is dummy summary This is dummy summaryThis is dummy summary This is dummy summaryThis is dummy summary This is dummy summaryThis is dummy summary This is dummy summaryThis is dummy summary This is dummy summaryThis is dummy summary This is dummy summaryThis is dummy summary This is dummy summaryThis is dummy summary This is dummy summaryThis is dummy summary This is dummy summaryThis is dummy summary This is dummy summaryThis is dummy summary This is dummy summaryThis is dummy summary This is dummy summaryThis is dummy summary This is dummy summaryThis is dummy summary This is dummy summaryThis is dummy summary This is dummy summaryThis is dummy summary This is dummy summaryThis is dummy summary This is dummy summaryThis is dummy summary This is dummy summaryThis is dummy summary This is dummy summaryThis is dummy summary This is dummy summaryThis is dummy summary This is dummy summaryThis is dummy summary "
         response = {
             'transcript': transcript,

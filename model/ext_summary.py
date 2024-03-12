@@ -8,7 +8,7 @@ nltk.download('punkt', quiet=True)
 def generate_extractive_summary(text):
     def replace_dot(input_string):
         # Replace . followed by anything other than whitespace with dot
-        return re.sub(r'\.(?!\s)', 'dot', input_string)
+        return re.sub(r'\.(?!\s|$|\n)', 'dot', input_string)
 
     stop_words = set(stopwords.words('english'))
     text = text.lower()
